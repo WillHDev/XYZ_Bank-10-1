@@ -1,19 +1,24 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from './pages/home';
+import { LoginPage } from './pages/auth';
 
 test('Make a deposit', async ({ page }) => {
 
   const homePage = new HomePage(page);
+  const loginPage = new LoginPage(page);
   
-  await page.goto('https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login');
+  // await page.goto('https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login');
 
-  await page.getByText('Customer Login').click();
+  // await page.getByText('Customer Login').click();
   
-  await page.locator('select.form-control').selectOption('Ron Weasly');
+  // await page.locator('select.form-control').selectOption('Ron Weasly');
     
-  await page.getByText('Login').click();
+  // await page.getByText('Login').click();
 
-  await expect(page.locator('.fontBig.ng-binding')).toHaveText('Ron Weasly');
+  // await expect(page.locator('.fontBig.ng-binding')).toHaveText('Ron Weasly');
+
+await loginPage.gotoUrl();
+await loginPage.login('Ron Weasly');
 
   await homePage.deposit.click();
 
