@@ -1,9 +1,7 @@
 import { test, expect } from './fixtures/xyz';
 
-test('Make a deposit', async ({ homePage, loginPage, page }) => {
-
-  await loginPage.gotoUrl();
-  await loginPage.login('Ron Weasly');
+test('Make a deposit', async ({ homePage, page }) => {
+  await homePage.gotoUrl();
   await homePage.deposit.click();
   await page.getByPlaceholder('amount').fill('750');
   await page.locator('form').locator("button[type=submit]").click();
